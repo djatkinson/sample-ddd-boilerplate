@@ -6,5 +6,5 @@ import (
 )
 
 type SampleRepository interface {
-	FindSampleByID(ctx context.Context, id int64) (*entity.SampleEntity, error)
+	FindSampleByID(ctx context.Context, id int64) (*entity.Sample, error)
 }

@@ -16,6 +16,14 @@ func NewSampleRepository(db *gorm.DB) *SampleRepository {
 	}
 }
 
-func (s *SampleRepository) FindSampleByID(ctx context.Context, id int64) (*entity.SampleEntity, error) {
-	return nil, nil
+func (s *SampleRepository) FindSampleByID(ctx context.Context, id int64) (*entity.Sample, error) {
+	var sample entity.Sample
+	result := s.db.WithContext(ctx).Where("id", id).Find(&sample)
+	if result.Error != nil {
+		if result.Error == gorm.ErrRecordNotFound {
+			return nil, nil
+		}
+		return nil, result.Error
+	}
+	return &sample, nil
 }

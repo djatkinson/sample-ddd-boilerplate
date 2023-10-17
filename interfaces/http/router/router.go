@@ -8,5 +8,5 @@ import (
 
 func SetupRoutes(app *fiber.App, sampleHandler handler.SampleHandler) {
 	sampleRouter := app.Group("/sample")
-	sampleRouter.Get("/", sampleHandler.GetSampleByID)
+	sampleRouter.Get("/:id", sampleHandler.GetSampleByID)
 }

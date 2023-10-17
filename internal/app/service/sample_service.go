@@ -3,7 +3,9 @@ package service
 import (
 	"context"
 	"ddd-boilerplate/interfaces/http/response"
+	"ddd-boilerplate/internal/app/mapper"
 	"ddd-boilerplate/internal/sample/repository"
+	"errors"
 )
 
 type sampleService struct {
@@ -21,5 +23,15 @@ func NewSampleService(sampleRepository repository.SampleRepository) SampleServic
 }
 
 func (s *sampleService) FindSampleByID(ctx context.Context, id int64) (*response.SampleResponse, error) {
-	return nil, nil
+	sample, err := s.sampleRepository.FindSampleByID(ctx, id)
+	if err != nil {
+		return nil, err
+	}
+
+	if sample == nil {
+		return nil, errors.New("data not found")
+	}
+
+	result := mapper.SampleEntityToResponse(sample)
+	return &result, nil
 }
