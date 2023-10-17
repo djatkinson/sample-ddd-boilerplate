@@ -32,7 +32,10 @@ require (
 	github.com/valyala/bytebufferpool v1.0.0 // indirect
 	github.com/valyala/fasthttp v1.50.0 // indirect
 	github.com/valyala/tcplisten v1.0.0 // indirect
+	go.elastic.co/apm/module/apmfasthttp/v2 v2.4.5 // indirect
+	go.elastic.co/apm/module/apmfiber/v2 v2.4.5 // indirect
 	go.elastic.co/apm/module/apmgormv2/v2 v2.4.5 // indirect
+	go.elastic.co/apm/module/apmhttp/v2 v2.4.5 // indirect
 	go.elastic.co/apm/module/apmsql/v2 v2.4.5 // indirect
 	go.elastic.co/apm/v2 v2.4.5 // indirect
 	go.elastic.co/fastjson v1.1.0 // indirect
