@@ -6,11 +6,14 @@ import (
 	"ddd-boilerplate/interfaces/http/router"
 	"ddd-boilerplate/internal/app/service"
 	"ddd-boilerplate/internal/shared/database/postgres"
+	"ddd-boilerplate/pkg/logger"
 	"log"
 )
 
 func main() {
 	config.LoadConfig()
+	logger.InitializeLogger()
+
 	db := config.ConnectDB()
 
 	sampleRepository := postgres.NewSampleRepository(db)
