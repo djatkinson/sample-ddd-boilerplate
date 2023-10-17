@@ -2,7 +2,7 @@ package config
 
 import (
 	"fmt"
-	"gorm.io/driver/postgres"
+	postgres "go.elastic.co/apm/module/apmgormv2/v2/driver/postgres"
 	"gorm.io/gorm"
 	"gorm.io/gorm/logger"
 )
