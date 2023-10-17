@@ -31,10 +31,10 @@ func (s *sampleService) FindSampleByID(ctx context.Context, id int64) (*response
 	}
 
 	if sample == nil {
+		log.Error(err.Error())
 		return nil, errors.New("data not found")
 	}
 	log.Info("mantap")
-
 	result := mapper.SampleEntityToResponse(sample)
 	return &result, nil
 }

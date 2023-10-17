@@ -1,7 +1,7 @@
 package config
 
 import (
-	"fmt"
+	"ddd-boilerplate/pkg/logger"
 	"github.com/joho/godotenv"
 	"os"
 )
@@ -9,7 +9,7 @@ import (
 func LoadConfig() {
 	err := godotenv.Load(".env")
 	if err != nil {
-		fmt.Println(err)
+		logger.Logger.Error(err.Error())
 	}
 }
 
