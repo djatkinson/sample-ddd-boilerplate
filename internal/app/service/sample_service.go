@@ -5,6 +5,7 @@ import (
 	"ddd-boilerplate/interfaces/http/response"
 	"ddd-boilerplate/internal/app/mapper"
 	"ddd-boilerplate/internal/sample/repository"
+	"ddd-boilerplate/pkg/logger"
 	"errors"
 )
 
@@ -23,6 +24,7 @@ func NewSampleService(sampleRepository repository.SampleRepository) SampleServic
 }
 
 func (s *sampleService) FindSampleByID(ctx context.Context, id int64) (*response.SampleResponse, error) {
+	log := logger.Ctx(ctx)
 	sample, err := s.sampleRepository.FindSampleByID(ctx, id)
 	if err != nil {
 		return nil, err
@@ -31,6 +33,7 @@ func (s *sampleService) FindSampleByID(ctx context.Context, id int64) (*response
 	if sample == nil {
 		return nil, errors.New("data not found")
 	}
+	log.Info("mantap")
 
 	result := mapper.SampleEntityToResponse(sample)
 	return &result, nil

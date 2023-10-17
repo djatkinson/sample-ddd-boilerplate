@@ -64,7 +64,7 @@ func postHandleRequest(c *fiber.Ctx, startAt time.Time) {
 		zap.String("protocol", c.Protocol()),
 		zap.String("remote_ip", c.IP()),
 		zap.Any("status_code", c.Response().StatusCode()),
-		zap.Any("response", c.Response().Body()),
+		zap.Any("response", json.RawMessage(c.Response().Body())),
 		zap.Float64("latency", time.Since(startAt).Seconds()),
 	}
 
