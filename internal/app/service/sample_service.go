@@ -2,7 +2,7 @@ package service
 
 import (
 	"context"
-	"ddd-boilerplate/interfaces/http/response"
+	"ddd-boilerplate/interface/http/response"
 	"ddd-boilerplate/internal/app/mapper"
 	"ddd-boilerplate/internal/sample/repository"
 	"ddd-boilerplate/pkg/logger"

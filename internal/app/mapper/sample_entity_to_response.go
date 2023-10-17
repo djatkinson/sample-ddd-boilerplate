@@ -1,7 +1,7 @@
 package mapper
 
 import (
-	"ddd-boilerplate/interfaces/http/response"
+	"ddd-boilerplate/interface/http/response"
 	"ddd-boilerplate/internal/sample/entity"
 )
 

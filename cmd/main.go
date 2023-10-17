@@ -2,28 +2,29 @@ package main
 
 import (
 	"ddd-boilerplate/cmd/config"
-	"ddd-boilerplate/interfaces/http/handler"
-	"ddd-boilerplate/interfaces/http/router"
+	"ddd-boilerplate/infrastructure/fiber"
+	"ddd-boilerplate/infrastructure/postgres"
+	"ddd-boilerplate/interface/http/handler"
+	"ddd-boilerplate/interface/http/router"
 	"ddd-boilerplate/internal/app/service"
-	"ddd-boilerplate/internal/shared/database/postgres"
+	pgInternal "ddd-boilerplate/internal/shared/database/postgres"
 	"ddd-boilerplate/pkg/logger"
 	"log"
 )
 
 func main() {
-	config.LoadConfig()
+	config := config.NewConfig()
 	logger.InitializeLogger()
 
-	db := config.ConnectDB()
+	psql := postgres.ConnectDB(config.PostgreSQLConfig)
 
-	sampleRepository := postgres.NewSampleRepository(db)
-
+	sampleRepository := pgInternal.NewSampleRepository(psql)
 	sampleService := service.NewSampleService(sampleRepository)
 
 	sampleHandler := handler.NewSampleHandler(sampleService)
 
-	app := config.InitFiberApp()
+	app := fiber.InitFiberApp()
 
 	router.SetupRoutes(app, *sampleHandler)
-	log.Fatal(app.Listen(":5100"))
+	log.Fatal(app.Listen(config.App.Port))
 }
