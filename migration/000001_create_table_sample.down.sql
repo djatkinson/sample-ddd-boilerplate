@@ -1,1 +1,1 @@
-DROP TABLE IF EXISTS sample;
+DROP TABLE IF EXISTS samples;

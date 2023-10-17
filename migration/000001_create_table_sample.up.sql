@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS sample (
+CREATE TABLE IF NOT EXISTS samples (
                                       id bigserial NOT NULL,
                                       name text,
                                       created_at timestamp,
