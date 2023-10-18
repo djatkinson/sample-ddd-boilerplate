@@ -25,7 +25,7 @@ func NewPostgreSQLConfig() *PostgreSQLConfig {
 		Port:          os.Getenv("POSTGRESQL_PORT"),
 		Username:      os.Getenv("POSTGRESQL_USERNAME"),
 		Password:      os.Getenv("POSTGRESQL_PASSWORD"),
-		Name:          os.Getenv("POSTGRESQL_NAME"),
+		Name:          os.Getenv("POSTGRESQL_DATABASE_NAME"),
 	}
 }
 

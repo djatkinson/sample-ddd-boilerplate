@@ -9,6 +9,7 @@ import (
 	"ddd-boilerplate/internal/app/service"
 	pgInternal "ddd-boilerplate/internal/shared/database/postgres"
 	"ddd-boilerplate/pkg/logger"
+	"ddd-boilerplate/pkg/migration"
 	"log"
 )
 
@@ -17,6 +18,11 @@ func main() {
 	logger.InitializeLogger()
 
 	psql := postgres.ConnectDB(config.PostgreSQLConfig)
+	err := migration.PostgresMigrate()
+	if err != nil {
+		panic(err)
+		logger.Logger.Error(err.Error())
+	}
 
 	sampleRepository := pgInternal.NewSampleRepository(psql)
 	sampleService := service.NewSampleService(sampleRepository)
