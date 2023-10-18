@@ -76,7 +76,7 @@ you can see this [repository](https://github.com/swaggo/swag) to get complete do
     ```bash
    make test-coverage
 
-## Swagger
+## TODO
 1. Sample Metric
 2. Swagger
 3. Dependecy Injection
