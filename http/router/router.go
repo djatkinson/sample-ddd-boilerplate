@@ -1,7 +1,7 @@
 package router
 
 import (
-	"ddd-boilerplate/interfaces/http/handler"
+	"ddd-boilerplate/http/handler"
 
 	"github.com/gofiber/fiber/v2"
 )
