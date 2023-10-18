@@ -1,7 +1,7 @@
 package fiber
 
 import (
-	"ddd-boilerplate/interfaces/http/middleware"
+	"ddd-boilerplate/http/middleware"
 
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"

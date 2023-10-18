@@ -1,22 +1,22 @@
 package config
 
 import (
-	"ddd-boilerplate/infrastructure/postgres"
 	"ddd-boilerplate/pkg/logger"
 
-	"github.com/joho/godotenv"
+	"github.com/spf13/viper"
 )
 
 func NewConfig() *Config {
 	LoadConfigFromFile()
 	return &Config{
 		App:              NewAppConfig(),
-		PostgreSQLConfig: postgres.NewPostgreSQLConfig(),
+		PostgreSQLConfig: NewPostgreSQLConfig(),
 	}
 }
 
 func LoadConfigFromFile() {
-	err := godotenv.Load(".env")
+	viper.SetConfigFile(".env")
+	err := viper.ReadInConfig()
 	if err != nil {
 		logger.Logger.Error(err.Error())
 	}

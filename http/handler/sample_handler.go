@@ -2,7 +2,7 @@ package handler
 
 import (
 	"ddd-boilerplate/internal/app/service"
-	"ddd-boilerplate/internal/shared/responses"
+	"ddd-boilerplate/pkg/responses"
 	"strconv"
 
 	"github.com/gofiber/fiber/v2"
