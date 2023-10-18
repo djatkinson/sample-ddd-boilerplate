@@ -10,6 +10,7 @@ This is the sample boilerplate of Golang DDD (Domain, Driven Design)
 - [Migration](#migration)
 - [Swagger](#swagger)
 - [Test](#test)
+- [TODO](#todo)
 
 ## Prerequisites
 
@@ -74,3 +75,14 @@ you can see this [repository](https://github.com/swaggo/swag) to get complete do
 2. Running coverage test
     ```bash
    make test-coverage
+
+## Swagger
+1. Sample Metric
+2. Swagger
+3. Dependecy Injection
+4. Sample Oracle Implementation
+5. Sample Kafka Implementation
+6. Sample Unit Testing
+7. Dockerfile (multi stage)
+8. Sample Socket
+9. Http Call Sample
