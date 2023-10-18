@@ -5,7 +5,6 @@ import (
 	"ddd-boilerplate/pkg/logger"
 	"errors"
 	"fmt"
-	"github.com/gofiber/fiber/v2/log"
 	"github.com/golang-migrate/migrate/v4"
 	"github.com/golang-migrate/migrate/v4/database/postgres"
 	_ "github.com/golang-migrate/migrate/v4/source/file"
@@ -14,6 +13,7 @@ import (
 )
 
 func PostgresMigrate() error {
+	log := logger.Logger
 	dsn := fmt.Sprintf("host=%s user=%s password=%s dbname=%s port=%s sslmode=disable",
 		os.Getenv("POSTGRESQL_PRIMARY_HOST"),
 		os.Getenv("POSTGRESQL_USERNAME"),
@@ -23,39 +23,40 @@ func PostgresMigrate() error {
 
 	db, err := sql.Open("postgres", dsn)
 	if err != nil {
-		logger.Logger.Error(err.Error())
+		log.Error(err.Error())
 		return err
 	}
 	driver, err := postgres.WithInstance(db, &postgres.Config{})
 	if err != nil {
-		logger.Logger.Error(err.Error())
+		log.Error(err.Error())
 		return err
 	}
 	m, err := migrate.NewWithDatabaseInstance(
 		"file://migration",
 		"postgres", driver)
 	if err != nil {
-		logger.Logger.Error(err.Error())
+		log.Error(err.Error())
 		return err
 	}
 
 	startVersion, _, err := m.Version()
 	if err != nil && !errors.Is(err, migrate.ErrNilVersion) {
-		logger.Logger.Error(err.Error())
+		log.Error(err.Error())
 		return err
 	}
-
 	err = m.Up()
 	if err != nil && err != migrate.ErrNoChange && err != migrate.ErrNilVersion && err != migrate.ErrLocked {
 		log.Error("Migration is dirty, forcing rollback and retrying")
-		endVersion, _, _ := m.Version()
-		fmt.Println("startversion", startVersion, "endversion", endVersion)
-		m.Steps(0 - 4)
+		endVersion, _, err := m.Version()
+		if err != nil && !errors.Is(err, migrate.ErrNilVersion) {
+			log.Error(err.Error())
+			return err
+		}
+
+		m.Force(int(endVersion) - 1)
+		m.Steps((int(startVersion) + 1) - int(endVersion))
+		m.Force(int(startVersion))
 	}
 
 	return nil
-}
-
-func Rollback(startVersion uint) {
-
 }

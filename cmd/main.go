@@ -21,7 +21,6 @@ func main() {
 	err := migration.PostgresMigrate()
 	if err != nil {
 		panic(err)
-		logger.Logger.Error(err.Error())
 	}
 
 	sampleRepository := pgInternal.NewSampleRepository(psql)

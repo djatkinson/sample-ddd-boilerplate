@@ -1,1 +1,0 @@
-ALTER TABLE tests RENAME COLUMN name to new_name
