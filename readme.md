@@ -40,7 +40,11 @@ Provide step-by-step instructions on how to install or set up your project. For 
    
 2. Running golang application
     ```bash
-   go run cmd/main.go
+   go run cmd/main.go 
+
+2. Running golang application using makefile
+    ```bash
+   make start-server
 
 ## Migration
 
@@ -50,7 +54,7 @@ Provide step-by-step instructions on how to install or set up your project. For 
 
 2. apply migration bash
     ```bash
-   todo
+   make run-migration-up
 
 3. apply migration manual
     ```bash

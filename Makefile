@@ -1,5 +1,18 @@
 include .env
 
+build:
+	go build -o ./bin/${APP_NAME}-http-server cmd/main.go
+build-migration:
+	go build -o ./bin/${APP_NAME}-migration cmd/migration/main.go
+start-server:
+	make build
+	./bin/${APP_NAME}-http-server
+run-migrate-up:
+	make build-migration
+	./bin/${APP_NAME}-migration migrate up
+run-migrate-down:
+	make build-migration
+	./bin/${APP_NAME}-migration migrate down
 migrateup:
 	while read line; do export $line; done < .env
 	@migrate -path migrations/postgres -database "postgresql://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}?sslmode=disable" -verbose up

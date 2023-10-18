@@ -1,2 +1,5 @@
 .env
 .idea/*
+docker-compose/var/*
+docker-compose/init/*
+bin
