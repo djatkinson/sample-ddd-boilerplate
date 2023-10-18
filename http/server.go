@@ -4,8 +4,8 @@ import (
 	"ddd-boilerplate/config"
 	"ddd-boilerplate/http/handler"
 	"ddd-boilerplate/http/router"
-	pgInternal "ddd-boilerplate/internal/app/database/postgres"
 	"ddd-boilerplate/internal/app/service"
+	pgInternal "ddd-boilerplate/internal/infrastructure/database/postgres"
 	"ddd-boilerplate/pkg/fiber"
 	"ddd-boilerplate/pkg/postgres"
 
