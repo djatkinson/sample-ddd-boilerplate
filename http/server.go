@@ -1,11 +1,11 @@
 package http
 
 import (
+	"ddd-boilerplate/app/service"
 	"ddd-boilerplate/config"
 	"ddd-boilerplate/http/handler"
 	"ddd-boilerplate/http/router"
-	"ddd-boilerplate/internal/app/service"
-	pgInternal "ddd-boilerplate/internal/infrastructure/database/postgres"
+	pgInternal "ddd-boilerplate/infrastructure/postgres"
 	"ddd-boilerplate/pkg/fiber"
 	"ddd-boilerplate/pkg/postgres"
 

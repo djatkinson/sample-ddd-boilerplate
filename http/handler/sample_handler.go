@@ -1,7 +1,7 @@
 package handler
 
 import (
-	"ddd-boilerplate/internal/app/service"
+	"ddd-boilerplate/app/service"
 	"ddd-boilerplate/pkg/responses"
 	"strconv"
 

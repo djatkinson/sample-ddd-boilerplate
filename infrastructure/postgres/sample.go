@@ -2,7 +2,7 @@ package postgres
 
 import (
 	"context"
-	"ddd-boilerplate/internal/domain/sample/entity"
+	"ddd-boilerplate/domain/sample/entity"
 
 	"gorm.io/gorm"
 )

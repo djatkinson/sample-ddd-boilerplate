@@ -2,7 +2,7 @@ package repository
 
 import (
 	"context"
-	"ddd-boilerplate/internal/domain/sample/entity"
+	"ddd-boilerplate/domain/sample/entity"
 )
 
 type SampleRepository interface {

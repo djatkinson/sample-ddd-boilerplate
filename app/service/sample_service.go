@@ -2,9 +2,9 @@ package service
 
 import (
 	"context"
+	"ddd-boilerplate/app/mapper"
+	"ddd-boilerplate/domain/sample/repository"
 	"ddd-boilerplate/http/response"
-	"ddd-boilerplate/internal/app/mapper"
-	"ddd-boilerplate/internal/domain/sample/repository"
 	"ddd-boilerplate/pkg/logger"
 	"errors"
 )
