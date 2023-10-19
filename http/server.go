@@ -7,13 +7,18 @@ import (
 	"ddd-boilerplate/http/router"
 	pgInternal "ddd-boilerplate/infrastructure/postgres"
 	"ddd-boilerplate/pkg/fiber"
+	"ddd-boilerplate/pkg/metrics"
 	"ddd-boilerplate/pkg/postgres"
+	"github.com/prometheus/client_golang/prometheus"
 
 	"log"
 )
 
 func StartServer(cfg *config.Config) {
 	psql := postgres.ConnectDBWithGorm(cfg.PostgreSQLConfig)
+
+	outboundMetrics := metrics.SetupOutboundMetric()
+	prometheus.MustRegister(outboundMetrics)
 
 	sampleRepository := pgInternal.NewSampleRepository(psql)
 	sampleService := service.NewSampleService(sampleRepository)
